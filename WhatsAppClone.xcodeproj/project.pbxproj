@@ -24,6 +24,7 @@
 		DE1A93892540600600BA869C /* ViewedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A93882540600600BA869C /* ViewedViewCell.swift */; };
 		DE1A938B2540679E00BA869C /* RecentStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A938A2540679E00BA869C /* RecentStatusData.swift */; };
 		DE1F544F254158BC00DD1333 /* ViewedStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F544E254158BC00DD1333 /* ViewedStatusData.swift */; };
+		DE1F545125416BE900DD1333 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F545025416BE900DD1333 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		DE1A93882540600600BA869C /* ViewedViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedViewCell.swift; sourceTree = "<group>"; };
 		DE1A938A2540679E00BA869C /* RecentStatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStatusData.swift; sourceTree = "<group>"; };
 		DE1F544E254158BC00DD1333 /* ViewedStatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedStatusData.swift; sourceTree = "<group>"; };
+		DE1F545025416BE900DD1333 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				DE1A938625405FF300BA869C /* RecentViewCell.swift */,
 				DE1A93882540600600BA869C /* ViewedViewCell.swift */,
 				DE1A9378254013CC00BA869C /* commonProtocol&Delegate.swift */,
+				DE1F545025416BE900DD1333 /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				DE1A93892540600600BA869C /* ViewedViewCell.swift in Sources */,
 				DE1A9379254013CC00BA869C /* commonProtocol&Delegate.swift in Sources */,
 				DE1A937D25402D7F00BA869C /* chatData.swift in Sources */,
+				DE1F545125416BE900DD1333 /* TestViewController.swift in Sources */,
 				DE1A938B2540679E00BA869C /* RecentStatusData.swift in Sources */,
 				DE1A935E2540132D00BA869C /* AppDelegate.swift in Sources */,
 				DE1A93602540132D00BA869C /* SceneDelegate.swift in Sources */,
