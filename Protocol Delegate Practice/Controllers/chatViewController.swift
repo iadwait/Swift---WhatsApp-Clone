@@ -21,25 +21,66 @@ class chatViewController: UIViewController {
     
     @IBOutlet weak var tableViewChat: UITableView!
     
+    @IBOutlet weak var viewWhatsApp: UIView!
+    @IBOutlet weak var viewSearch: UIView!
+    
+    @IBOutlet weak var txtSearchField: UITextField!
+    
+    
+    
     
     let myGreen = UIColor(red: 27/255, green: 164/255, blue: 52/255, alpha: 1.0)
     
     
     let arrChatData:[chatData] = [
-    chatData(imageName: "p1", name: "Raj Patel", lastMessage: "Ok, i will come to office.", time: "9:06am"),
-    chatData(imageName: "p2", name: "Rohan Deshpande", lastMessage: "Ok, i will get back to you.", time: "4:55pm"),
-    chatData(imageName: "p3", name: "Mahesh Patil", lastMessage: "Let's go tomorrow", time: "2:14pm"),
-    chatData(imageName: "p4", name: "Suresh Singh", lastMessage: "when are the Exams.", time: "10:12am"),
-    chatData(imageName: "p5", name: "Rony Mallya", lastMessage: "we will send them EOD.", time: "2:14pm"),
-    chatData(imageName: "p6", name: "Mayuri kakad", lastMessage: "ok i will check", time: "8:09am"),
-    chatData(imageName: "p7", name: "Mayur lachke", lastMessage: "please brink lapi", time: "12:14pm"),
-    chatData(imageName: "p8", name: "Neha pawar", lastMessage: "office tomorrow at 10.30", time: "3:14pm")
+        chatData(imageName: "p1", name: "Raj Patel", lastMessage: "Ok, i will come to office.", time: "9:06am"),
+        chatData(imageName: "p2", name: "Rohan Deshpande", lastMessage: "Ok, i will get back to you.", time: "4:55pm"),
+        chatData(imageName: "p3", name: "Mahesh Patil", lastMessage: "Let's go tomorrow", time: "2:14pm"),
+        chatData(imageName: "p4", name: "Suresh Singh", lastMessage: "when are the Exams.", time: "10:12am"),
+        chatData(imageName: "p5", name: "Rony Mallya", lastMessage: "we will send them EOD.", time: "2:14pm"),
+        chatData(imageName: "p6", name: "Mayuri kakad", lastMessage: "ok i will check", time: "8:09am"),
+        chatData(imageName: "p7", name: "Mayur lachke", lastMessage: "please brink lapi", time: "12:14pm"),
+        chatData(imageName: "p8", name: "Neha pawar", lastMessage: "office tomorrow at 10.30", time: "3:14pm")
+    ]
+    
+    var tempArray:[chatData] = [
+        
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configureTableView()
+        
+        for obj in arrChatData{
+            tempArray.append(obj)
+        }
+        
+        txtSearchField.addTarget(self, action: #selector(searchText), for: .editingChanged)
+    }
+    
+    
+    @objc func searchText()
+    {
+        self.tempArray.removeAll()
+        
+        if txtSearchField.text?.count != 0
+        {
+            for search in 0..<arrChatData.count{
+                
+                let data = arrChatData[search].name
+                guard let nameToSearch = txtSearchField.text else{ return }
+                let range = data.lowercased().range(of: nameToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                if range != nil{
+                    self.tempArray.append(arrChatData[search])
+                }
+                
+            }        }else{
+            for obj in arrChatData{
+                self.tempArray.append(obj)
+            }
+        }
+        tableViewChat.reloadData()
     }
     
     func configureTableView()
@@ -61,6 +102,8 @@ class chatViewController: UIViewController {
         statusView.backgroundColor = .clear
         btnCall.setTitleColor(UIColor.white, for: .normal)
         callsView.backgroundColor = .clear
+        
+        viewSearch.isHidden = true
         
     }
     
@@ -107,6 +150,16 @@ class chatViewController: UIViewController {
         callsVC.didMove(toParent: self)
     }
     
+    @IBAction func btnSearchTapped(_ sender: UIButton) {
+        viewSearch.isHidden = false
+        viewWhatsApp.isHidden = true
+    }
+    
+    @IBAction func btnBackTapped(_ sender: UIButton) {
+        viewSearch.isHidden = true
+        viewWhatsApp.isHidden = false
+    }
+    
     
     
 }
@@ -115,12 +168,13 @@ extension chatViewController: UITableViewDelegate,UITableViewDataSource
 {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrChatData.count
+        //return arrChatData.count
+        return tempArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewChat.dequeueReusableCell(withIdentifier: "chatViewCell") as! chatViewCell
-        let data = arrChatData[indexPath.row]
+        let data = tempArray[indexPath.row]
         cell.imgProfilePic.image = UIImage(named: data.imageName)
         cell.lblName.text = data.name
         cell.lblMessage.text = data.lastMessage

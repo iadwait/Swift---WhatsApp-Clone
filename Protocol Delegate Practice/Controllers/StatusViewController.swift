@@ -18,7 +18,7 @@ class StatusViewController: UIViewController {
     @IBOutlet weak var tableViewViewed: UITableView!
     @IBOutlet weak var tableViewedHeight: NSLayoutConstraint!
     
-    
+ 
     
     var arrRecentUpdates:[RecentStatusData] = [
         RecentStatusData(imageName: "p1", name: "Raj Patel", dateTime: "12October,2:05pm"),
