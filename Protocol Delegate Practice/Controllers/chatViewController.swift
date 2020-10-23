@@ -159,9 +159,6 @@ class chatViewController: UIViewController {
         viewSearch.isHidden = true
         viewWhatsApp.isHidden = false
     }
-    
-    
-    
 }
 
 extension chatViewController: UITableViewDelegate,UITableViewDataSource
